@@ -1,5 +1,5 @@
 import requests
-from bs4 import BeautifulSoup
+from lxml import html
 import discord
 
 # Initialize Discord client
@@ -24,6 +24,13 @@ async def check_for_updates():
         # Retrieve the content of the web page
         response = requests.get(url)
         current_content = response.text
+
+        # Parse HTML content using lxml
+        tree = html.fromstring(current_content)
+
+        # Extract relevant information (if needed)
+        # For example, you can use XPath to extract specific elements:
+        # title = tree.xpath('//title/text()')[0]
 
         # Check if there's a difference between current and previous content
         if current_content != previous_content:
