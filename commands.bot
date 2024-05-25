@@ -1,0 +1,12 @@
+import discord
+from discord.ext import commands
+import youtube_dl
+
+# Define intents
+intents = discord.Intents.default()
+intents.voice_states = True
+
+# Bot initialization with intents
+bot = commands.Bot(command_prefix='!', intents=intents)
+
+# Rest of your code...
