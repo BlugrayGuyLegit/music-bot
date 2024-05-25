@@ -2,18 +2,18 @@ import discord
 from discord.ext import commands
 import youtube_dl
 
-# Initialisation du bot
+# Bot initialization
 bot = commands.Bot(command_prefix='!')
 
 @bot.event
 async def on_ready():
-    print(f'Connecté en tant que {bot.user}')
+    print(f'Logged in as {bot.user}')
 
 @bot.command()
 async def play(ctx, url):
     voice_channel = ctx.author.voice.channel
     if voice_channel is None:
-        await ctx.send("Vous devez être dans un salon vocal pour utiliser cette commande.")
+        await ctx.send("You must be in a voice channel to use this command.")
     else:
         await voice_channel.connect()
         ctx.voice_client.stop()
